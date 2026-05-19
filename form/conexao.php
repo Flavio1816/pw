@@ -7,5 +7,7 @@ define('DB_USER',  'root');
 define('DB_PASS',  '');
 define('DB_NAME',  'cadastro');
 
+
+
 $pdo = new PDO('mysql:host=' . DB_HOST, DB_USER, DB_PASS);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

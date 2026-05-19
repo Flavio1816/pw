@@ -35,6 +35,9 @@ if ($erros) {
     exit(json_encode(['sucesso' => false, 'erros' => $erros]));
 }
 
+
+
+
 // ═══════════════════════════════════════════════
 //  PASSO 4 — Conecta ao MySQL e cria o banco
 // ═══════════════════════════════════════════════
@@ -77,14 +80,22 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute($valores);
 
+    echo "Dados salvos com sucesso!";
+
+
+    
 // ═══════════════════════════════════════════════
 //  PASSO 8 — Retorna sucesso
 // ═══════════════════════════════════════════════
-    echo json_encode([
+   
+header('Location: index.html');
+
+echo json_encode([
         'sucesso'  => true,
         'mensagem' => 'Cadastro salvo com sucesso!',
         'id'       => (int) $pdo->lastInsertId(),
     ]);
+  
 
 } catch (PDOException $e) {
     http_response_code(500);
